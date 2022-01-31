@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import sys
 import django_heroku
 from pathlib import Path
 
@@ -23,9 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+xi2d^8vg%7p2_7(ep*-jx@j=q6-_4#0im735jhsnm9y6(!^66'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
+   DEBUG = True
+else:
+   DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost',' flutterappsystem.herokuapp.com/']
 
 
 # Application definition
